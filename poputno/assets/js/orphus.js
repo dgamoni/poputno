@@ -1,5 +1,5 @@
 (function(){var _1="5.01";
-var _2="!gdmano@imgia.locm";
+var _2="!enswp@potuoni.fno";
 var hq="http://orphus.ru/ru/";
 var _4="<!!!>";
 var _5="<!!!>";

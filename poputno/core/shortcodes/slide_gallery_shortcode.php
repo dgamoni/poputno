@@ -197,16 +197,22 @@ function my_gallery_shortcode( $attr ) {
 
 		    $i = 0;
 			foreach ( $attachments as $id => $attachment ) {
-				if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
-					$image_output = wp_get_attachment_link( $id, $atts['size'], false, false );
-				} elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
-					$image_output = wp_get_attachment_image( $id, $atts['size'], false );
-				} else {
-					$image_output = wp_get_attachment_link( $id, $atts['size'], true, false );
-				}
-				$image_meta  = wp_get_attachment_metadata( $id );
+				// if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
+				// 	$image_output = wp_get_attachment_link( $id, $atts['size'], false, false );
+				// } elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
+				// 	$image_output = wp_get_attachment_image( $id, $atts['size'], false );
+				// } else {
+				// 	$image_output = wp_get_attachment_link( $id, $atts['size'], true, false );
+				// }
+				// $image_meta  = wp_get_attachment_metadata( $id );
+				// $my_output .= "<li>$image_output</li>";
 
-				$my_output .= "<li>$image_output</li>";
+				// fix add bfi
+				$src = wp_get_attachment_image_src( $id, $atts['size'] );
+  				$params = array( 'width' => 735,  'height' => 555 );
+
+  				$my_output .= "<li><img src=\"" . bfi_thumb( $src[0], $params ) . "\"/></li>";
+ 
 			}
 
 	        $my_output .= "</ul>";

@@ -32,6 +32,7 @@ require_once 'includes/timespan.php';
 
 // dgamoni
 //require_once 'modules/deco-wsl-addon-login-process/init.php';
+require_once 'libs/BFI_Thumb.php';
 
 // Автозагрузка библиотек и функций
 $dirs = array(

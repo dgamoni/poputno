@@ -36,7 +36,7 @@
 			<?php 
 			//var_dump(get_the_category());
 
-			if( in_category( 'places' ) ){
+			if( in_category( 'places' ) || in_category( 'events' ) ){
 				
 				$cur_terms =  get_the_terms(  get_the_ID(), 'region' );
 				//var_dump($cur_terms );

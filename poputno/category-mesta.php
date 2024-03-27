@@ -13,6 +13,10 @@
 </div>
 <!-- end top tag dgamoni  -->
 
+
+<!-- fix 2000 7-07-15 -->
+<div class="my_wrap">
+
 <!-- dgamoni  -->
 <div class="po_main_left">
 <!-- end dgamoni  -->
@@ -74,5 +78,9 @@ if (is_paged()) {
     ?>
 <div class="cf"></div>
 <!-- end dgamoni  -->
+
+<!-- fix 2000 7-07-15 -->
+</div> 
+<!-- end my_wrap -->
 
 <?php get_footer(); ?>
