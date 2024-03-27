@@ -1,0 +1,37 @@
+/* STYLES FOR WORDPRESS LOGIN PAGE
+-----------------------------------------------------------------------------*/
+.login {color: #fbfbfb;}
+.login #login {color: #000;}
+.login #nav, .login #nav a, .login #backtoblog, .login #backtoblog a {
+	color: #20BBE7 !important;
+	text-shadow: none;
+}
+.login #nav a:hover, .login #backtoblog a:hover {
+	color: #0885a8 !important;
+	text-shadow: none;
+}
+.login #backtoblog {
+	position: fixed;
+	left: 25px;
+	top: 0;
+}
+.login #backtoblog a {
+	display: inline-block;
+	color: #0885a8;
+}
+.login #backtoblog a:hover {
+	color: #0885a8;
+}
+
+form {
+	-khtml-box-shadow: 0 0 50px rgba(0, 166, 213, 1);
+	-moz-box-shadow: 0 0 50px rgba(0, 166, 213, 1);
+	-webkit-box-shadow: 0 0 50px rgba(0, 166, 213, 1);
+	box-shadow: 0 0 50px rgba(0, 166, 213, 1);
+} 
+.login h1 a {
+	background: url(/images/logo.png) no-repeat 0 0; width: 80px; height: 70px; display: block; margin: 35px auto 40px; padding: 0; background-size: 80px 70px;
+}
+h1 a:hover { opacity: 0.8; }
+#login form p.submit { height: 30px;}
+#wp-social-login-connect-options {padding: 10px 0 !important;}

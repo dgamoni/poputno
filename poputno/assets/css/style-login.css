@@ -1,0 +1,26 @@
+/*  Style Login page */
+
+body.login {
+
+}
+body.login div.message {
+	width: 300px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+body.login div#login #loginform {
+	width: 280px;
+}
+body.login div#login h1 a {
+	background: url(../img/logo.png) top center no-repeat;
+	width: 61px;
+	height: 40px;
+}
+body.login div#login h1 a:hover {
+	opacity: .85;
+}
+#backtoblog { display: none;}
+.login#nav { margin-left: 0px;}
+#nav,#nav a { text-shadow: none; text-align: center;}

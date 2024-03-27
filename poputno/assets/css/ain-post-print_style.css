@@ -1,0 +1,143 @@
+
+@media print
+ {
+
+	* { -webkit-print-color-adjust: exact;
+	}
+
+
+	body {
+		background: #fff !important;
+		color: #000 !important;
+	}
+
+	img {
+
+		display: none !important;
+	}
+
+
+	.sticky {
+		position: absolute !important;
+	}
+
+	.logo img {
+		display: block !important;
+	}
+
+
+	.header .wrap {
+		padding-bottom: 20px;
+	} 
+
+	.wrap {
+
+		width: 1000px !important;
+		max-width: 1000px !important;
+		float:left;
+
+	} 
+
+	.post {
+		width: 1000px !important;
+		max-width: 1000px !important;
+		padding: 0 !important;
+		float: left;
+		page-break-inside: always;
+		page-break-after: always;
+		page-break-before: always;
+	}
+
+
+	.banner_top, iframe, .fb-post, .standalone-tweet, .post_likes, .menu, .float-posts-nav, .size-full, .related_posts, .widget_like, .tag_list, .footer, 
+	.go_up, .sidebar, .column_c13, .orf, .notification-menu, .user-menu, .notification-menu, #footer, #form, .no-posts {
+		display:none !important;
+
+	}
+
+	.comment_box iframe {
+		display: block !important;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
