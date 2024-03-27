@@ -34,7 +34,8 @@ jQuery(document).ready(function ($) {
             loading_bar(true);
             jQuery.ajax({
                 type: "post",
-                url: params.ajax_url,
+                //url: params.ajax_url,
+                url: ajaxurl,
                 data: {action: 'dc_ajax_search', term: term},
                 success: function (data, textStatus, xhr) {
 

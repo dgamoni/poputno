@@ -17,6 +17,14 @@
 
 <?php get_header(); ?>
 
+<!-- top tag dgamoni  -->
+<div class="wrap poputno_tag">
+    <ul>
+        <?php top_tags();?>
+    </ul>
+</div>
+<!-- end top tag dgamoni  -->
+
 <section class="main" id="main">
 
 	<div class="wrap cf">
@@ -121,8 +129,8 @@
 
 			?>
 			<div class="vac-head cf">
-				<p class="lefter">Мои вакансии</p>
-				<a href="/jobs/add-job" class="add_vacancy">Добавить вакансию</a>
+				<p class="lefter">Мои истории</p>
+				<!-- <a href="/jobs/add-job" class="add_vacancy">Добавить вакансию</a> -->
 			</div>
 			<ul class="vacancies-list ">
 				<?php
@@ -131,7 +139,7 @@
 							'posts_per_page' => 10,
 							'orderby'        => 'post_date',
 							'order'          => 'DESC',
-							'post_type'      => 'univac_vacancy',
+							//'post_type'      => 'univac_vacancy',
 							'post_status'    => 'any',
 						);
 					} else {
@@ -140,7 +148,7 @@
 							'orderby'        => 'post_date',
 							'order'          => 'DESC',
 							'author'         => $current_user->ID,
-							'post_type'      => 'univac_vacancy',
+							//'post_type'      => 'univac_vacancy',
 							'post_status'    => 'any',
 						);
 					}
@@ -175,15 +183,19 @@
 				$post = $temp_post;
 
 			?>
-			<div class="post_ads">
-				<div id='div-gpt-ad-1348523472889-0' style='width:728px; height:90px;'>
+
+			<!-- ads  -->
+<!-- 			<div class="post_ads">
+				<div id='div-gpt-ad-1348523472889-0' style='width:728px; height:90px;'> -->
 					<script type='text/javascript'>
-						googletag.cmd.push(function () {
-							googletag.display('div-gpt-ad-1348523472889-0');
-						});
+						// googletag.cmd.push(function () {
+						// 	googletag.display('div-gpt-ad-1348523472889-0');
+						// });
 					</script>
-				</div>
-			</div>
+<!-- 				</div>
+			</div> -->
+
+			
 		</div>
 
 		<?php get_sidebar(); ?>

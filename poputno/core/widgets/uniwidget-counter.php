@@ -129,11 +129,11 @@ class ag_social_widget extends WP_Widget
     {
         /* Default widget settings */
         $defaults = array(
-            'facebook' => 'AINUA',
-            'twitter' => 'ain_ua',
-            'rss' => 'ainua',
-            'vk' => 'ain_ua',
-            'gp' => 'ainua',
+            'facebook' => 'poputno',
+            'twitter' => 'poputno',
+            'rss' => 'poputno',
+            'vk' => 'poputno',
+            'gp' => 'poputno',
         );
         $instance = wp_parse_args((array)$instance, $defaults); ?>
         <p>

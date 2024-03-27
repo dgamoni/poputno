@@ -38,6 +38,8 @@ function wpt_register_js()
          wp_enqueue_script("jPushMenu", get_template_directory_uri() . "/assets/js/jPushMenu.js", array(), '', TRUE);
          
          //wp_enqueue_script("collapsible", get_template_directory_uri() . "/assets/js/jquery.collapsible.js", array(), '', TRUE);
+
+         wp_enqueue_script("orphus", get_template_directory_uri() . "/assets/js/orphus.js", array(), '', TRUE);
     }
 }
 

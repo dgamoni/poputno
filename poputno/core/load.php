@@ -30,6 +30,9 @@ require_once 'wp_schedule_events.php';
 require_once 'includes/header_breadcrumbs.php';
 require_once 'includes/timespan.php';
 
+// dgamoni
+//require_once 'modules/deco-wsl-addon-login-process/init.php';
+
 // Автозагрузка библиотек и функций
 $dirs = array(
     CORE_PATH . '/widgets/',

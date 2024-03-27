@@ -638,12 +638,13 @@
 		$soc     = false;
 		$de_data = false;
 
-		//		if ( isset( $wpdb->de_statistics ) ) {
-		//			$de_data = $wpdb->get_row( "SELECT * FROM $wpdb->de_statistics WHERE post_id = $post_id" );
-		//		} else {
-		$view = $wpdb->get_row( "SELECT * FROM pr_stats WHERE PostId = $post_id " );
-		$soc  = $wpdb->get_row( "SELECT * FROM social_rank WHERE page_id = $post_id " );
-		//		}
+				if ( isset( $wpdb->de_statistics ) ) {
+					$de_data = $wpdb->get_row( "SELECT * FROM $wpdb->de_statistics WHERE post_id = $post_id" );
+				} else {
+					$view = $wpdb->get_row( "SELECT * FROM pr_stats WHERE PostId = $post_id " );
+					$soc  = $wpdb->get_row( "SELECT * FROM social_rank WHERE page_id = $post_id " );
+					//var_dump($view);
+				}
 
 		$comments = $wpdb->get_row( "SELECT COUNT(*) as comment_counts FROM $wpdb->comments WHERE comment_post_ID = $post_id" );
 		//		$res['cn'] = get_comments_number( $post_id );
@@ -658,19 +659,19 @@
 			$res['sum'] = $soc->page_fb_votes + $soc->page_tw_votes + $soc->page_vk_votes + $res['cn'];
 		}
 
-		//else if ( $de_data && is_object( $de_data ) ) {
-		//			$res['fb']   = $de_data->fb_counts;
-		//			$res['tw']   = $de_data->tw_counts;
-		//			$res['vk']   = $de_data->vk_counts;
-		//			$res['gp']   = $de_data->gplus_counts;
-		//			$res['view'] = $de_data->views_counts;
-		//
-		//			$res['sum'] = $de_data->fb_counts + $de_data->tw_counts + $de_data->vk_counts + $res['cn'];
-		//}
-
-		if ( $view && is_object( $view ) ) {
-			$res['view'] = $view->Views;
+		else if ( $de_data && is_object( $de_data ) ) {
+					$res['fb']   = $de_data->fb_counts;
+					$res['tw']   = $de_data->tw_counts;
+					$res['vk']   = $de_data->vk_counts;
+					$res['gp']   = $de_data->gplus_counts;
+					$res['view'] = $de_data->views_counts;
+		
+					$res['sum'] = $de_data->fb_counts + $de_data->tw_counts + $de_data->vk_counts + $res['cn'];
 		}
+
+		// if ( $view && is_object( $view ) ) {
+		// 	$res['view'] = $view->Views;
+		// }
 
 		//print_r($votes);
 		return $res;
@@ -712,7 +713,7 @@
 		//$image = urlencode(get_thumbnail_img_post($post->ID));
 		$image = urlencode( get_img_post( get_the_ID(), $size = 'ain-post' ) );
 		if ( empty( $image ) ) {
-			$image = urlencode( "http://ain.ua/images/logo.png" );
+			//$image = urlencode( "http://ain.ua/images/logo.png" );
 		}
 
 		?>
@@ -1414,7 +1415,7 @@
 		?>
 
 		<!-- two latest posts and advertisement -->
-		<ul class="fresh_latest_posts_wrapper cf">
+		<!-- <ul class="fresh_latest_posts_wrapper cf"> -->
 			<?php
 				if ( is_category() ) {
 					$args['category__in'] = get_query_var( 'cat' );
@@ -1430,12 +1431,16 @@
 				$exclude_top_post = array();
 				$the_query        = new WP_Query( $args );
 				
-				if ( $the_query->have_posts() ) :
-					while ( $the_query->have_posts() ) : $the_query->the_post();
-						get_template_part( 'content', 'latest_post' );
-						$exclude_top_post[]             = get_the_ID();
-						$exclude_posts_for_main_query[] = get_the_ID();
-					endwhile; endif;
+				if ( $the_query->have_posts() ) : ?>
+					<ul class="fresh_latest_posts_wrapper cf">
+						<?php
+						while ( $the_query->have_posts() ) : $the_query->the_post();
+							get_template_part( 'content', 'latest_post' );
+							$exclude_top_post[]             = get_the_ID();
+							$exclude_posts_for_main_query[] = get_the_ID();
+						endwhile; ?>	
+					</ul> <?php
+					endif;
 				wp_reset_postdata();
 				$sticky_post_content = ob_get_clean();
 
@@ -1491,7 +1496,7 @@
 				</div>
 			</li> -->
 
-		</ul>
+		<!-- </ul> -->
 
 	<?php
 
@@ -1808,6 +1813,7 @@ function poputno_category($id) {
 	} else {
 		$category = get_the_category($id); 
 		$cat = $category[0]->cat_name;
+		//var_dump($category);
 	}
 
 	return $cat;
@@ -1898,6 +1904,7 @@ function top_tags() {
         //         		print "<li><a href=\"$tag_link\">$tag</a></li>";
         //         }
         // }
+        $tag_count = get_field('poputno_tag_count', 'option' );
 
         foreach ( $arr as $key => $arrs ) {
                 $i++;
@@ -1906,7 +1913,7 @@ function top_tags() {
                 $countt = $arrs[count];
                 $hed =  $arrs[header];
 
-                if($i < 11){
+                if($i < $tag_count){
                     print "<li><a href=\"$tag_link\">$name</a></li>";
                 }
         }
@@ -1940,3 +1947,57 @@ function top_tags() {
 
 			return $exclude_posts_for_main_query;
 	}
+
+
+function get_blix_archive($show_comment_count=0, $before='<h4>', $after='</h4>', $year=0, $post_type='post', $limit=100){
+	global $month, $wpdb;
+	$result = '';
+
+	if($year) $AND_year = " AND YEAR(post_date)='$year'";
+	if($limit) $LIMIT = " LIMIT $limit";
+	$arcresults = $wpdb->get_results("SELECT DISTINCT YEAR(post_date) AS year, MONTH(post_date) AS month, count(ID) as posts FROM " . $wpdb->posts . " WHERE post_type='$post_type' $AND_year AND post_status='publish' GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY post_date DESC");
+
+	//var_dump($arcresults);
+
+	if($arcresults){
+		foreach($arcresults as $arcresult){
+			$url  = get_month_link($arcresult->year, $arcresult->month);
+    		$text = sprintf('%s %d', $month[zeroise($arcresult->month,2)], $arcresult->year);
+    		$result .= get_archives_link($url, $text, '', $before, $after);
+
+			$thismonth = zeroise($arcresult->month,2);
+			$thisyear = $arcresult->year;
+
+				$arcresults2 = $wpdb->get_results("SELECT ID, post_date, post_title, comment_status, guid, comment_count, post_excerpt FROM " . $wpdb->posts . " WHERE post_date LIKE '$thisyear-$thismonth-%' AND post_status='publish' AND post_type='$post_type' AND post_password='' ORDER BY post_date DESC $LIMIT");
+
+			//var_dump($arcresults2);
+			//global $post; 
+			//var_dump($post);
+
+			if ($arcresults2){
+        		$result .= "<ul class=\"new_posts_wrapper\">\n";
+        		//var_dump($arcresults2);
+            	foreach ($arcresults2 as $arcresult2) {
+               		if ($arcresult2->post_date != '0000-00-00 00:00:00') {
+                 		$url       =  get_permalink($arcresult2->ID); //$arcresult2->guid;
+                 		$arc_title = $arcresult2->post_title;
+                 		$date = "<time class=\"cf1\" datetime=".get_the_time('Y/m/d', $arcresult2->ID).">". get_the_time('d F', $arcresult2->ID) ."<span></span></time>";
+
+                 		if ($arc_title) $text = strip_tags($arc_title);
+                    	else $text = $arcresult2->ID;
+
+                   		$result .= "<li class=\"cal-item\">".$date."<h3>". get_archives_link($url, $text, '')."</h3>";
+						if($show_comment_count){
+							$cc = $arcresult2->comment_count;
+							if ($arcresult2->comment_status == "open" OR $comments_count > 0) $result .= " ($cc)";
+						}
+						$result .= "<div class='txt'><a href=".$url.">". $arcresult2->post_excerpt ."</a></div>";
+						$result .= "</li>\n";
+                 	}
+            	}
+            	$result .= "</ul>\n";
+        	}
+		}
+	}
+	return $result;
+}

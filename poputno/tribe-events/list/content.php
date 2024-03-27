@@ -53,6 +53,6 @@ if ( !defined('ABSPATH') ) { die('-1'); } ?>
 		<?php do_action( 'tribe_events_after_footer_nav' ); ?>
 
 	</div><!-- #tribe-events-footer -->
-	<?php do_action( 'tribe_events_after_footer' ) ?>
+	<?php //do_action( 'tribe_events_after_footer' ) ?>
 
 </div><!-- #tribe-events-content -->

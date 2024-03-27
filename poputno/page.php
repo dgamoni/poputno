@@ -1,4 +1,13 @@
 <?php get_header(); ?>
+
+<!-- top tag dgamoni  -->
+<div class="wrap poputno_tag">
+    <ul>
+        <?php top_tags();?>
+    </ul>
+</div>
+<!-- end top tag dgamoni  -->
+
     <section class="main" id="main">
 
         <div class="wrap cf">

@@ -5,6 +5,14 @@
         <?php echo do_shortcode('[ULWPQSF id=161]' );?>
     </nav>
 
+    <!-- top tag dgamoni  -->
+    <div class="wrap poputno_tag">
+        <ul>
+            <?php top_tags();?>
+        </ul>
+    </div>
+    <!-- end top tag dgamoni  -->
+
     <!-- dgamoni left block -->
     <div class="po_main_left">
 
@@ -24,7 +32,8 @@
                                     printf('Архив за год: %s', get_the_date(_x('Y', 'yearly archives date format')));
 
                                 else :
-                                    echo 'Архивы';
+                                    // echo 'Архивы';
+                                    single_term_title();
 
                                 endif;
                                 ?></big></h3>

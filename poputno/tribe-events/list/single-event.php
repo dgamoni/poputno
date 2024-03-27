@@ -133,6 +133,7 @@ list($d, $m, $y) = explode('.', $start_date);
 <time datetime="<?php echo $start_date; ?>"><?php echo $d; ?><span>.<?php echo $m; ?></span></time>
 
 <div class="event-content">
+<!-- <div class="event-content_po"> -->
 
     <!-- Event Cost -->
 

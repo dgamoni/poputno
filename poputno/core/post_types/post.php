@@ -203,6 +203,31 @@ add_filter('request', 'make_post_custom_field_sortable_request');
             )
         ),
 
+        array(
+            'slug'       => 'category_event',
+            'post_types' => array(
+                'post',
+            ),
+            'args'       => array(
+                'hierarchical'      => true, // false if use tag style
+                'show_ui'           => true,
+                'labels'            => array(
+                    'name'          => __( 'Тип события', 'joinup' ),
+                    'singular_name' => __( 'Тип события', 'joinup' ),
+                    'search_items'  => __( 'Найти', 'joinup' ),
+                    'edit_item'     => __( 'Редактировать', 'joinup' ),
+                    'update_item'   => __( 'Обновить', 'joinup' ),
+                    'add_new_item'  => __( 'Добавить', 'joinup' ),
+                    'new_item_name' => __( 'Тип события', 'joinup' ),
+                    'menu_name'     => __( 'Тип события', 'joinup' ),
+                ),
+                'query_var'         => true,
+                'rewrite'           => true,
+                'show_in_nav_menus' => true,
+                'show_admin_column' => false,
+            )
+        ),
+
     
     );
 

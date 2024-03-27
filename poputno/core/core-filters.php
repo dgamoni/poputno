@@ -107,7 +107,7 @@ function uni_redirect_after_login($redirect_to, $request, $user)
     }
 }
 
-add_filter('login_redirect', 'uni_redirect_after_login', 10, 3);
+//add_filter('login_redirect', 'uni_redirect_after_login', 10, 3);
 
 // show admin bar only for admins
 if (!current_user_can('manage_options')) {
@@ -153,8 +153,8 @@ if (!function_exists('custom_excerpt_more')) {
     function custom_excerpt_more($more)
     {
         global $post;
-        //return '<br><a class="tag" href="'. get_permalink($post->ID) . '">Читать далее...</a>';
-        return '';
+        //return '<br><a class="moretag" href="'. get_permalink($post->ID) . '">Читать далее...</a>';
+        return '...';
     }
 
     add_filter('excerpt_more', 'custom_excerpt_more');
@@ -165,7 +165,7 @@ if (!function_exists('custom_excerpt_more')) {
 if (!function_exists('custom_excerpt_length')) {
     function custom_excerpt_length($length)
     {
-        return 40; // В анонсе только первые 20 слов
+        return 20; // В анонсе только первые 20 слов
     }
 
     add_filter('excerpt_length', 'custom_excerpt_length', 999);

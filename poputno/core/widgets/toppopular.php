@@ -42,6 +42,7 @@ class toppopul_sidebar_widget extends WP_Widget
             echo $before_title . $title . $after_title;
 
         echo '<ul class="depostrating-toppopul-posts he">';
+        //var_dump($aData);
         foreach ($aData as $aPost) {
             if (in_array($aPost['Post']->post_type, $aChoosenTypes)) {
                 ?>
@@ -51,7 +52,10 @@ class toppopul_sidebar_widget extends WP_Widget
                        title="<?php echo htmlspecialchars($aPost['Post']->post_title, ENT_QUOTES); ?>">
                         <?php echo $aPost['Post']->post_title; ?>
                     </a>
-                    <span class="depr-views popular"><?php echo $aPost['Views']; ?></span>
+                    <span class="depr-views popular"><?php 
+                    //echo $aPost['Views']; 
+                    echo $aPost['decollete_post_views']; 
+                    ?></span>
                 </li>
 
             <?php

@@ -1,4 +1,9 @@
-<?php global $post; ?>
+<?php
+//global $post;
+global $arcresults2;
+$post = $arcresults2;
+ ?>
+
 <li class="new_post_item">
 	<div class="new_img_cont">
 

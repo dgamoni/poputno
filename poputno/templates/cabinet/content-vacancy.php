@@ -25,7 +25,7 @@
 
 	<div class="comp-txt cf">
 		<div class="company" style="width: 40%; padding-left: 20px;">
-			<a class="edit_vacancy" href="/jobs/edit-vacancy?vacancy_id=<?php echo get_the_ID(); ?>" title="Редактировать вакансию"></a>
+			<!-- <a class="edit_vacancy" href="/jobs/edit-vacancy?vacancy_id=<?php echo get_the_ID(); ?>" title="Редактировать вакансию"></a> -->
 			<h4>
 				<a href="<?php echo get_permalink( get_the_ID() ); ?>"><?php the_title(); ?></a>
 			</h4>
@@ -82,7 +82,7 @@
 					<?php } ?>
 			</ul>
 
-			<span class="del_vacancy" title="Удалить вакансию" onclick="Vacancy.del(this, <?php echo get_the_ID(); ?>)"></span>
+			<!-- <span class="del_vacancy" title="Удалить вакансию" onclick="Vacancy.del(this, <?php echo get_the_ID(); ?>)"></span> -->
 		</div>
 	</div>
 </li>

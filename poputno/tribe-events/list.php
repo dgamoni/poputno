@@ -25,15 +25,16 @@ if (!defined('ABSPATH')) {
 
 
 
-<div class="wrap cf">
+<!-- <div class="wrap cf"> -->
 
-    <div class="calendar-content">
+    <div class="po_main_left po_event-wrap">
+    
+       <!--  <div class="vac-head cf bb"> -->
+        <div class="vac-head cf">
 
-        <div class="vac-head cf bb">
-
-            <h3 class="lefter">Календарь мероприятий</h3>
+            <h3 class="lefter">События</h3>
              
-            <a href="/add_event" class="add_vacancy">Добавить мероприятие</a>
+            <a href="/add_event" class="add_vacancy">Добавить событие</a>
 
 
             <?php
@@ -50,7 +51,7 @@ if (!defined('ABSPATH')) {
 
             ?>
 
-            <a href="<?php echo $url; ?>" class="cal_back"><span>&#8249;</span> Календарь</a>
+            <!-- <a href="<?php echo $url; ?>" class="cal_back"><span>&#8249;</span> Календарь</a> -->
 
         </div>
 
@@ -64,7 +65,7 @@ if (!defined('ABSPATH')) {
 
         <?php //tribe_get_template_part('modules/bar'); ?>
 
-        <br><br>
+        <!-- <br><br> -->
 
         <!-- Main Events Content -->
 
@@ -84,8 +85,11 @@ if (!defined('ABSPATH')) {
     </div>
 
 
-    <?php get_sidebar(); ?>
+    <div class="sidebar " id="sidebar">
+    	<?php get_sidebar(); ?>
+    </div>
+    <div class="cf"></div>
 
 
 
-</div>
+<!-- </div> -->

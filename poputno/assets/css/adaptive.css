@@ -1,5 +1,5 @@
 /******************************
-	AIN ### Adaptive ### CSS
+	poputno ### Adaptive ### CSS
 ******************************/
 body[data-ie="ie11"] .logo img {
 	height: 37px;
@@ -92,7 +92,8 @@ body[data-ie="ie11"] .logo img {
 	text-transform: uppercase;
 	position: absolute;
 	top: 29px;
-	right: 75px;
+	/*right: 75px;*/
+	  right: 83px;
 }
 .big_trigger:hover {
 	opacity: .9;
@@ -349,7 +350,7 @@ span.red {opacity: .5; font-size: 12px; padding: 2px 5px;}
 		margin-bottom: 30px;
 	}
 	.calendar-content + .post_ads.vac + .sidebar, .calendar-content + .sidebar {
-		display: none;
+		/*display: none;*/
 	}
 	.vac-item .comp-txt {
 		width: calc(100% - 80px);
@@ -936,6 +937,11 @@ span.red {opacity: .5; font-size: 12px; padding: 2px 5px;}
 	.go_up {
 		display: none !important;
 	}
+
+	.poputno_tag {
+		display: none;
+	}
+
 	.fpost.img_land {
 		width: 48%;
 		margin: 0 0 4%;
@@ -1153,7 +1159,8 @@ span.red {opacity: .5; font-size: 12px; padding: 2px 5px;}
 		display: inline-block;
 		/*margin-top: 3px;*/
 		position: absolute;
-  		top: 26px;
+  		/*top: 26px;*/
+  		top: 16px;
 	}
 	.nav_wrap {
 		display: none;
@@ -1898,7 +1905,7 @@ span.red {opacity: .5; font-size: 12px; padding: 2px 5px;}
 	  margin-left: 0;
 	}
 	.date-item.tribe-events-othermonth, .column_c13, #sidebar {
-	   display: none; 
+	   /*display: none; */
 	}
 }
 @media   (max-width: 765px){

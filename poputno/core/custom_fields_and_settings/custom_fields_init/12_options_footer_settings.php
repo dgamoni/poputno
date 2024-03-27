@@ -32,17 +32,17 @@ if (function_exists("register_options_page")) {
                     'formatting' => '',
                     'order_no' => 2,
                 ),*/
-                2 => array(
-                    'key' => 'field_' . $id . '_3',
-                    'label' => 'Код рекламы для блока с работой и событиями',
-                    'name' => 'works_and_events_adv',
-                    'type' => 'textarea',
-                    'instructions' => '',
-                    'required' => '0',
-                    'default_value' => '',
-                    'formatting' => '',
-                    'order_no' => 2,
-                ),
+                // 2 => array(
+                //     'key' => 'field_' . $id . '_3',
+                //     'label' => 'Код рекламы для блока с работой и событиями',
+                //     'name' => 'works_and_events_adv',
+                //     'type' => 'textarea',
+                //     'instructions' => '',
+                //     'required' => '0',
+                //     'default_value' => '',
+                //     'formatting' => '',
+                //     'order_no' => 2,
+                // ),
             ),
         'location' =>
             array(

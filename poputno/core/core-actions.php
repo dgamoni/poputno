@@ -1,5 +1,64 @@
 <?php
 
+// ------------for filter
+
+
+
+add_action('uwpqsf_form_bottom', 'taxonomy_hidden_field');
+    function taxonomy_hidden_field($attr){
+
+    if( is_category('events') ){ 
+        $html = '';
+        //$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+        //$the_tax = get_taxonomy( get_query_var( 'taxonomy' ) );
+        {
+        $html .= '<input type="hidden" name="taxo[99][name]" value="category">';//taxonomy
+        $html .= '<input type="hidden" name="taxo[99][opt]" value="3">';// 1 is IN, 2 is NOT In, 3 is AND
+        $html .= '<input type="hidden" name="taxo[99][term]" value="events">';//the term
+        }
+        echo $html;
+    }
+
+    if( is_category('places') ){ 
+        $html = '';
+        //$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+        //$the_tax = get_taxonomy( get_query_var( 'taxonomy' ) );
+        {
+        $html .= '<input type="hidden" name="taxo[99][name]" value="category">';//taxonomy
+        $html .= '<input type="hidden" name="taxo[99][opt]" value="3">';// 1 is IN, 2 is NOT In, 3 is AND
+        $html .= '<input type="hidden" name="taxo[99][term]" value="places">';//the term
+        }
+        echo $html;
+    }
+
+    if( is_category('lajfhaki') ){ 
+        $html = '';
+        //$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+        //$the_tax = get_taxonomy( get_query_var( 'taxonomy' ) );
+        {
+        $html .= '<input type="hidden" name="taxo[99][name]" value="category">';//taxonomy
+        $html .= '<input type="hidden" name="taxo[99][opt]" value="3">';// 1 is IN, 2 is NOT In, 3 is AND
+        $html .= '<input type="hidden" name="taxo[99][term]" value="lajfhaki">';//the term
+        }
+        echo $html;
+    }
+
+    if( is_category('gadgets') ){ 
+        $html = '';
+        //$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+        //$the_tax = get_taxonomy( get_query_var( 'taxonomy' ) );
+        {
+        $html .= '<input type="hidden" name="taxo[99][name]" value="category">';//taxonomy
+        $html .= '<input type="hidden" name="taxo[99][opt]" value="3">';// 1 is IN, 2 is NOT In, 3 is AND
+        $html .= '<input type="hidden" name="taxo[99][term]" value="gadgets">';//the term
+        }
+        echo $html;
+    }
+
+
+}
+
+//----------------------------
 add_action('wp_head', 'fb_like_thumbnails');
 
 function fb_like_thumbnails()

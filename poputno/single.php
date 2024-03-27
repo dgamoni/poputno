@@ -1,6 +1,19 @@
 <?php get_header(); ?>
 <?php ain_posts_nav(); ?>
 
+<!-- Left menu element-->
+<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left">
+    <?php echo do_shortcode('[ULWPQSF id=159]' );?>
+</nav>
+
+<!-- top tag dgamoni  -->
+<div class="wrap poputno_tag">
+    <ul>
+        <?php top_tags();?>
+    </ul>
+</div>
+<!-- end top tag dgamoni  -->
+
 	<section class="main" id="main">
 
 	<div class="wrap cf">
@@ -18,6 +31,48 @@
 				</div>
 			<?php } ?>
 
+			<!-- get category -->
+			
+			<?php 
+			//var_dump(get_the_category());
+
+			if( in_category( 'places' ) ){
+				
+				$cur_terms =  get_the_terms(  get_the_ID(), 'region' );
+				//var_dump($cur_terms );
+
+					if ($cur_terms) {
+						foreach($cur_terms as $cur_term){
+							 $catt[] = $cur_term->name ;
+							 $catt2[] = $cur_term->term_id ;
+						}
+						$cat = 	$catt[0];
+						$cat2 = $catt2[0];
+						$category_link = get_term_link($cat2, 'region');
+						echo '<h4><a href="'. $category_link .'">'. $cat. '</a></h4>';
+					}
+
+			} 
+			else if( in_category( 'gadgets' ) || in_category( 'lajfhaki' )){
+				
+				$cur_terms =  get_the_terms(  get_the_ID(), 'topic' );
+				//var_dump($cur_terms );
+
+					if ($cur_terms) {
+						foreach($cur_terms as $cur_term){
+							 $catt[] = $cur_term->name ;
+							 $catt2[] = $cur_term->term_id ;
+						}
+						$cat = 	$catt[0];
+						$cat2 = $catt2[0];
+						$category_link = get_term_link($cat2, 'topic');
+						echo '<h4><a href="'. $category_link .'">'. $cat. '</a></h4>';
+					}
+
+			}
+			?>
+			<!-- end category -->
+
 			<h1><?php the_title(); ?></h1>
 
 			<aside class="post_meta">
@@ -29,7 +84,9 @@
 				   rel="author"><?php //echo $avatar; ?><?php echo get_the_author_meta( 'display_name' ); ?></a>
 
 				<time datetime="<?php the_time( 'd-m-Y' ) ?>"><?php the_time( 'd' ); ?>
-					<?php echo month_full_name_ru( get_the_time( 'n' ) ); ?> <?php the_time( 'Y' ); ?></time>
+					<?php //echo month_full_name_ru( get_the_time( 'n' ) ); ?>
+					<?php the_time( 'm' ); ?>
+					<?php the_time( 'Y' ); ?></time>
                             <span title="Просмотры" class="post_views"><?php $res = get_soc_votes( get_the_ID() );
 		                            echo $res['view']; ?></span>
 

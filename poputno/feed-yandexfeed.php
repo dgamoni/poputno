@@ -2,7 +2,7 @@
 /**
  * Custom RSS2 Feed Template for Yandex.
  *
- * ain.ua
+ * 
  */
 
 header("Content-Type: application/rss+xml; charset=UTF-8");

@@ -5,6 +5,14 @@
     <?php echo do_shortcode('[ULWPQSF id=145]' );?>
 </nav>
 
+<!-- top tag dgamoni  -->
+<div class="wrap poputno_tag">
+    <ul>
+        <?php top_tags();?>
+    </ul>
+</div>
+<!-- end top tag dgamoni  -->
+
 <!-- dgamoni  -->
 <div class="po_main_left">
 <!-- end dgamoni  -->
@@ -102,6 +110,8 @@ if (count($all_post_ids) >= 2) {
 global $exclude_posts_for_main_query;
 //ajax_pagination($custom_query = false, $inner_class = '.ajax-content', $posts_per_page = 15, $ajax_action = 'ain_ajax_pagination', null, $excluded_posts); 
 ajax_pagination($custom_query = false, $inner_class = '.ajax-content', $posts_per_page = 15, $ajax_action = 'ain_ajax_pagination', null, $excluded_posts = $exclude_posts_for_main_query); ?>
+    
+    <div class="cf"></div>
 
     <div class="fresh_navigation">
         <?php

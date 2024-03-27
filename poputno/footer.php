@@ -74,15 +74,11 @@
         </nav>
 
 
-        <br/>
+        <!-- <br/> -->
 
-        <p class="copyrights">
-
-            <?php
-            /* global $sape;
-            echo $sape->return_links(); */
-            ?>
-        </p>
+        <p class="copyrights">Использование материалов сайта poputno.info разрешено только при наличии активной ссылки на источник. Все права на тексты принадлежат редакции.</p>
+ 
+        
 
 <!--         <div class="copyright">
             <p>&copy; 2015 <a href="<?php bloginfo('url'); ?>"></a></p>
@@ -123,16 +119,61 @@
 
     </div>
 
+<!-- Yandex.Metrika informer -->
+<a href="https://metrika.yandex.ua/stat/?id=31030541&amp;from=informer"
+target="_blank" rel="nofollow"><img src="https://bs.yandex.ru/informer/31030541/2_0_FFFFFFFF_EFEFEFFF_1_pageviews"
+style="width:80px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры)" /></a>
+<!-- /Yandex.Metrika informer -->
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter31030541 = new Ya.Metrika({
+                    id:31030541,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true,
+                    trackHash:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/31030541" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- begin of Top100 code -->
+
+<script id="top100Counter" type="text/javascript" src="http://counter.rambler.ru/top100.jcn?3116489"></script>
+<noscript>
+<a href="http://top100.rambler.ru/navi/3116489/">
+<img src="http://counter.rambler.ru/top100.cnt?3116489" alt="Rambler's Top100" border="0" />
+</a>
+
+</noscript>
+<!-- end of Top100 code -->
+
 </footer>
 
 <?php if (is_single()) { ?>
     <a href="#" id="go_up" class="go_up"></a>
 <?php } ?>
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
 
-</script>
 
 
 <!-- VK -->
@@ -162,6 +203,14 @@
 
 </script>
 <!-- end google -->
+
+
+
+
+                <div style="display:none;">
+                    <a href="http://orphus.ru" id="orphus" target="_blank" title="undefined">
+                    <img alt="Система Orphus" src="/orphus/orphus.gif" border="0" width="257" height="48"></a>
+                </div>
 
 <?php dc_form_search_ajax(); ?>
 

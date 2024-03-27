@@ -1,9 +1,50 @@
 <?php get_header(); ?>
 
 <!-- Left menu element-->
-<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left">
-    <?php echo do_shortcode('[ULWPQSF id=159]' );?>
-</nav>
+<?php
+if( is_category('events') ){ ?>
+
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left">
+        <?php echo do_shortcode('[ULWPQSF id=1207]' );?>
+    </nav>
+
+<?php 
+} else if( is_category('lajfhaki') ){ ?>
+
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left">
+        <?php echo do_shortcode('[ULWPQSF id=1208]' );?>
+    </nav>
+
+<?php 
+} else if( is_category('places') ){ ?>
+
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left">
+        <?php echo do_shortcode('[ULWPQSF id=161]' );?>
+    </nav>
+
+<?php 
+} else if( is_category('gadgets') ){ ?>
+
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left">
+        <?php echo do_shortcode('[ULWPQSF id=1209]' );?>
+    </nav>
+
+<?php 
+} else {
+?>
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left">
+        <?php echo do_shortcode('[ULWPQSF id=159]' );?>
+    </nav>
+
+<?php } ?>
+
+<!-- top tag dgamoni  -->
+<div class="wrap poputno_tag">
+    <ul>
+        <?php top_tags();?>
+    </ul>
+</div>
+<!-- end top tag dgamoni  -->
 
 <!-- dgamoni  -->
 <div class="po_main_left">

@@ -63,7 +63,7 @@
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/assets/css/adaptive.css?ver=28102014">
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/assets/css/ain-post-print_style.css?28102014">
 
-	<link rel="shortcut icon" type="image/x-icon" href="<?php bloginfo( 'template_directory' ); ?>/favicon.ico?v=2">
+	<link rel="shortcut icon" type="image/x-icon" href="<?php bloginfo( 'template_directory' ); ?>/favicon.ico?v=3">
 	<!-- <link rel="apple-touch-icon" href="<?php bloginfo( 'url' ); ?>/images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="http://ain.ua/images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="http://ain.ua/images/apple-touch-icon-114x114.png"> -->
@@ -97,7 +97,7 @@
 
 	<?php if ( is_home() ) { ?>
 		<meta property="og:title" content="POPUTNO.INFO">
-		<!-- <meta property="og:image" content="http://poputno.info/images/logo.png"> -->
+		<meta property="og:image" content="http://poputno.info/wp-content/themes/poputno/assets/img/logo-po.png">
 		<meta property="og:description" content="<?php bloginfo( 'description' ); ?>">
 	<?php } ?>
 	<meta name="title" content="<?php the_title() ?>" />
@@ -107,6 +107,10 @@
 	} else {
 		echo catch_that_image();
 	} ?>">
+
+	<script type="text/javascript">
+	    var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>";
+	</script>
 
 	<?php wp_head(); ?>
 
@@ -121,15 +125,17 @@
 
 <header class="header" id="header">
 
-	<div class="logo">
-		<a href="<?php bloginfo( 'url' ); ?>">poputno.info</a>
+	<div class="logo_po">
+		<a href="<?php bloginfo( 'url' ); ?>">
+			<img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-po.png" alt="poputno.info">
+		</a>
 	</div>
 
 	<div class="wrap">
 
 <!-- 		<h1 class="logo">
 			<a href="<?php bloginfo( 'url' ); ?>">
-				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.svg" alt="poputno.info"> 
+				<img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo-po.png" alt="poputno.info"> 
 
 			</a>
 		</h1> -->
@@ -143,7 +149,7 @@
     <div class="bar bar3 cross hidden"></div>
     <div class="bar bar4 hide"></div>
   </div>
-  <!-- <span>фильтры</span> -->
+  <span>фильтры</span>
 </div>
 
 
@@ -215,10 +221,10 @@
 		</nav>
 	</div> <!-- end wrap -->
 
-	<div class="wrap poputno_tag">
+<!-- 	<div class="wrap poputno_tag">
 		<ul>
-		 	<?php top_tags();?>
+		 	<?php //top_tags();?>
 		</ul>
-	</div>
+	</div> -->
 
 </header>

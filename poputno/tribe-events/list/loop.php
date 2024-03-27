@@ -20,8 +20,9 @@ global $more;
 $more = false;
 ?>
 
-<ul class="tribe-events-loop hfeed vcalendar cal-list">
-    <br><br>
+<!-- <ul class="tribe-events-loop hfeed vcalendar cal-list "> -->
+<ul class="hfeed vcalendar cal-list new_posts new_posts_wrapper  ajax-content">
+    <!-- <br><br> -->
     <?php while (have_posts()) : the_post(); ?>
         <?php do_action('tribe_events_inside_before_loop'); ?>
 

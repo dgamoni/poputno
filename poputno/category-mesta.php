@@ -5,6 +5,14 @@
     <?php echo do_shortcode('[ULWPQSF id=161]' );?>
 </nav>
 
+<!-- top tag dgamoni  -->
+<div class="wrap poputno_tag">
+    <ul>
+        <?php top_tags();?>
+    </ul>
+</div>
+<!-- end top tag dgamoni  -->
+
 <!-- dgamoni  -->
 <div class="po_main_left">
 <!-- end dgamoni  -->
