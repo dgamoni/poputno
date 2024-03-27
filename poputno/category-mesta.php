@@ -12,7 +12,7 @@
 <?php if (!is_paged()) {
 
     //Два верхним огромных поста
-    //top_two_big_posts_and_adv();
+    top_two_big_posts_and_adv();
 
     //Это лучшее в категориях и на главной
     //featured_posts_home_page();

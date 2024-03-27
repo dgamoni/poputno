@@ -483,6 +483,56 @@ jQuery(document).ready(function(){
 
 jQuery(document).ready(function($){
 
-$('.toggle-menu').jPushMenu();
+	$('.toggle-menu').jPushMenu();
+
+	$('.tax_child').hide();
+
+	// $('.uwpqsf_class input').iCheck({
+	// 	checkedClass: 'checked',
+	// 	checkboxClass: 'icheckbox_minimal-orange',
+	//     radioClass: 'iradio_minimal-orange',
+	//     //increaseArea: '20%' // optional
+	// });
+
+	// $('.parent0 input').on('ifChecked', function(event){
+	//   //alert(event.type + ' callback'+ $(this).attr('data-idd') );
+	//   $idd = $(this).attr('data-idd');
+	//   console.log($idd);
+
+	// 	// $('.parent1').each(function(index, val) {
+	// 	// 	if ($('.parent1').attr('data-id') === $idd) {
+	// 	// 	    //console.log( $(this).parent().parent() );
+	// 	// 	    $(this).show();
+	// 	// 	}
+	// 	// });
+
+	// });
+
+		// $('.tax_parent').click(
+		// 	function(event) {
+		// 		//$('.tax_child').toggleClass("hilite");
+		// 		$(this).next('.tax_child').show();
+  //           }
+  //        );
+
+
+
+    	$('.tax_parent').toggle(
+            function () {
+                $(this).next().next('.tax_child').show();
+                //$(this).find('input').attr('Checked','Checked'); 
+
+            },
+            function () {
+                $(this).next().next('.tax_child').hide();
+                //$(this).find('input:checkbox').removeAttr('Checked'); 
+            }
+
+        );
+
+		$('.simple-slider').bxSlider({
+		  mode: 'fade',
+		  captions: true
+		});
 
 });

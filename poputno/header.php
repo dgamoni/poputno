@@ -213,5 +213,12 @@
 				</li>
 			</ul>
 		</nav>
+	</div> <!-- end wrap -->
+
+	<div class="wrap poputno_tag">
+		<ul>
+		 	<?php top_tags();?>
+		</ul>
 	</div>
+
 </header>

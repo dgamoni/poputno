@@ -98,7 +98,8 @@
 						$args = array(
 							'tag__in'        => $tags_ids,
 							'post__not_in'   => array( get_the_ID() ),
-							'posts_per_page' => 6,
+							// 'posts_per_page' => 6,
+							'posts_per_page' => 4,
 							//'ignore_sticky_posts' => 1
 						);
 
@@ -107,7 +108,8 @@
 							$cat   = get_the_category();
 							$args  = array(
 								'post__not_in'   => array( get_the_ID() ),
-								'posts_per_page' => 6,
+								// 'posts_per_page' => 6,
+								'posts_per_page' => 4,
 								//'ignore_sticky_posts' => 1,
 								'cat'            => $cat[0]->term_id
 							);
@@ -158,8 +160,9 @@
 		</div>
 
 		<section class="comment_box wrap cf" id="comments-box">
-			<div class="comment_list column_c23" onclick="return false;">
-				<div class="widget_orphus" onclick="return false;">
+			<!-- <div class="comment_list column_c23" onclick="return false;"> -->
+			<div class="comment_list " onclick="return false;">
+<!-- 				<div class="widget_orphus" onclick="return false;">
 
 					<div class="orfus">
                         <span class="orf">
@@ -175,7 +178,7 @@
 						</div>
 
 					</div>
-				</div>
+				</div> -->
 
 				<?php if ( get_post_status() == 'publish' ) : ?>
 					<noindex><?php comments_template( '', true ); ?></noindex>
@@ -206,3 +209,4 @@
 	?>
 	</section>
 <?php get_footer(); ?>
+<?php //var_dump( get_tags() ); ?>

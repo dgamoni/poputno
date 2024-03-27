@@ -741,6 +741,32 @@
 					<?php echo $vk; ?>
 				</div>
 			</div>
+
+			<div class="pocket soc"
+			     onclick="ain_window('https://getpocket.com/edit?url=<?php echo get_permalink( $post->ID ); ?>','Добавить в Pocket'); return false;"
+			     title="Добавить в Pocket">
+				<div class="top-soc"><i class="icon-pocket"></i></div>
+				<div class="bot-soc">
+					<?php echo pocket_readers_count(); ?>
+				</div>
+			</div>
+
+<!-- 						<div class="b-share b-share_type_pocket">
+				<div class="b-share__button"
+				     onclick="ain_window('https://getpocket.com/edit?url=<?php echo get_permalink( $post->ID ); ?>','Добавить в Pocket'); return false;"
+					><i class="icon-pocket"></i>
+					<hc id="hc_select_index13" class="hc_select_index"></hc>
+					Pocket
+				</div>
+				<div class="b-share__counter">
+            <span class="count"><hc id="hc_select_index14"
+                                    class="hc_select_index"></hc><?php echo pocket_readers_count(); ?></span>
+
+					<div class="b-share__counter__triangle"></div>
+				</div>
+			</div> -->
+
+
 		</div>
 	<?php
 	}
@@ -1379,9 +1405,11 @@
 	}
 
 
+
 	function top_two_big_posts_and_adv() {
 
 		global $exclude_posts_for_main_query;
+		//var_dump($exclude_posts_for_main_query);
 
 		?>
 
@@ -1392,7 +1420,8 @@
 					$args['category__in'] = get_query_var( 'cat' );
 				}
 
-				$args['posts_per_page'] = 1;
+				//$args['posts_per_page'] = 1;
+				$args['posts_per_page'] = 2;
 
 				$args['post__in']            = get_option( 'sticky_posts' );
 				$args['ignore_sticky_posts'] = 1;
@@ -1400,6 +1429,7 @@
 				ob_start();
 				$exclude_top_post = array();
 				$the_query        = new WP_Query( $args );
+				
 				if ( $the_query->have_posts() ) :
 					while ( $the_query->have_posts() ) : $the_query->the_post();
 						get_template_part( 'content', 'latest_post' );
@@ -1409,27 +1439,38 @@
 				wp_reset_postdata();
 				$sticky_post_content = ob_get_clean();
 
-				if ( $sticky_post_content ) {
-					$args['posts_per_page'] = 1;
-					//            $args['ignore_sticky_posts'] = 1;
-					$args['post__not_in'] = $exclude_top_post;
-				} else {
-					$args['posts_per_page'] = 2;
-				}
+				//var_dump($sticky_post_content);
+
+				// if ( $sticky_post_content ) {
+				// 	$args['posts_per_page'] = 1;
+				// 	//            $args['ignore_sticky_posts'] = 1;
+				// 	$args['post__not_in'] = $exclude_top_post;
+				// } else {
+				// 	$args['posts_per_page'] = 2;
+				// }
 
 				unset( $args['post__in'] );
 				unset( $args['ignore_sticky_posts'] );
 
+				//var_dump($sticky_post_content);
 
-				$the_query = new WP_Query( $args );
-				if ( $the_query->have_posts() ) :
-					while ( $the_query->have_posts() ) : $the_query->the_post();
-						get_template_part( 'content', 'latest_post' );
-						$exclude_top_post[]             = get_the_ID();
-						$exclude_posts_for_main_query[] = get_the_ID();
-					endwhile; endif;
-				wp_reset_postdata();
+				// if ( count($sticky_post_content) == 1 ) {
 
+				// 	$args['posts_per_page'] = 1;
+				// 	$args['post__not_in'] = $exclude_top_post;
+
+				// 	$the_query = new WP_Query( $args );
+
+				// 	if ( $the_query->have_posts() ) :
+				// 		while ( $the_query->have_posts() ) : $the_query->the_post();
+				// 			get_template_part( 'content', 'latest_post' );
+				// 			$exclude_top_post[]             = get_the_ID();
+				// 			$exclude_posts_for_main_query[] = get_the_ID();
+				// 		endwhile; endif;
+				// 	wp_reset_postdata();
+				// }
+
+				//var_dump($exclude_posts_for_main_query);
 
 				echo $sticky_post_content;
 
@@ -1691,7 +1732,10 @@
 		$two_last_posts = get_two_last_posts_id_for_exclude();
 		$featured_posts = get_featured_posts_for_exclude();
 
-		$exclude_posts = array_merge( $two_last_posts, $featured_posts );
+		//$exclude_posts = array_merge( $two_last_posts, $featured_posts );
+		// dgamoni fix
+		$exclude_posts = $featured_posts;
+
 		$excludeds     = array();
 		if ( $num_offset ) {
 			$args          = array(
@@ -1728,4 +1772,171 @@
 
 		// Меняем логику возврата результата что бы не использовать знак НЕ в условии
 		return true;
+	}
+
+// poputno
+
+if( function_exists('add_interface_taxonomy_order') ){
+    add_interface_taxonomy_order ("region");
+}
+if( function_exists('has_interface_taxonomy_order') ){
+    $enable = has_interface_taxonomy_order ("region");
+}
+
+function poputno_category($id) {
+	
+	if( is_category( 'mesta') ){
+		$cur_terms =  get_the_terms( $id, 'region' );
+
+			if ($cur_terms) {
+				foreach($cur_terms as $cur_term){
+					 $catt[] = $cur_term->name ;
+				}
+				$cat = 	$catt[0];	
+			}
+
+	} else if( is_category( 'lajfhaki') || is_category('gadzhety' ) ){
+		$cur_terms =  get_the_terms( $id, 'topic' );
+
+			if ($cur_terms) {
+				foreach($cur_terms as $cur_term){
+					 $catt[] = $cur_term->name ;
+				}
+				$cat = 	$catt[0];	
+			}
+
+	} else {
+		$category = get_the_category($id); 
+		$cat = $category[0]->cat_name;
+	}
+
+	return $cat;
+}
+
+// add_option( 'destatistics', 's:24:"O:12:"Destatistics":0:{}";' ); 
+// add_option( 'DESTAT_Post_Type', 'a:1:{i:0;s:4:"post";}' ); 
+		
+function cmp($a, $b) {
+	return $a["mid"] - $b["mid"];
+}
+
+//сортировка http://stackoverflow.com/questions/96759/how-do-i-sort-a-multidimensional-array-in-php
+
+function make_comparer() {
+    // Normalize criteria up front so that the comparer finds everything tidy
+    $criteria = func_get_args();
+    foreach ($criteria as $index => $criterion) {
+        $criteria[$index] = is_array($criterion)
+            ? array_pad($criterion, 3, null)
+            : array($criterion, SORT_ASC, null);
+    }
+
+    return function($first, $second) use ($criteria) {
+        foreach ($criteria as $criterion) {
+            // How will we compare this round?
+            list($column, $sortOrder, $projection) = $criterion;
+            $sortOrder = $sortOrder === SORT_DESC ? -1 : 1;
+
+            // If a projection was defined project the values now
+            if ($projection) {
+                $lhs = call_user_func($projection, $first[$column]);
+                $rhs = call_user_func($projection, $second[$column]);
+            }
+            else {
+                $lhs = $first[$column];
+                $rhs = $second[$column];
+            }
+
+            // Do the actual comparison; do not return if equal
+            if ($lhs < $rhs) {
+                return -1 * $sortOrder;
+            }
+            else if ($lhs > $rhs) {
+                return 1 * $sortOrder;
+            }
+        }
+
+        return 0; // tiebreakers exhausted, so $first == $second
+    };
+}
+// end
+
+function top_tags() {
+        $tags = get_tags();
+        if (empty($tags))
+                return;
+        $counts = $tag_links = array();
+        foreach ( (array) $tags as $key=>$tag ) {
+                $counts[$tag->name] = $tag->count;
+                $tag_links[$tag->name] = get_tag_link( $tag->term_id );
+                $tag_header[$tag->name] = get_field( 'tag_enable', 'post_tag_'.$tag->term_id );
+
+                $arr[$key][name] = $tag->name;
+                $arr[$key][count] = intval($tag->count);
+                $arr[$key][link] = get_tag_link( $tag->term_id );
+                $arr[$key][header] = intval(get_field( 'tag_enable', 'post_tag_'.$tag->term_id ));
+                
+        }
+        //var_dump($arr);
+
+        asort($counts);
+        $counts = array_reverse( $counts, true );
+        
+	
+		usort($arr, make_comparer('header','count'));
+		$arr = array_reverse( $arr, true );	
+		//var_dump($arr);
+
+
+        $i = 0;
+        // foreach ( $counts as $tag => $count ) {
+        //         $i++;
+        //         $tag_link = clean_url($tag_links[$tag]);
+        //         $tag = str_replace(' ', '&nbsp;', wp_specialchars( $tag ));
+        //         if($i < 11){
+        //                 // print "<li><a href=\"$tag_link\">$tag ($count)</a></li>";
+        //         		print "<li><a href=\"$tag_link\">$tag</a></li>";
+        //         }
+        // }
+
+        foreach ( $arr as $key => $arrs ) {
+                $i++;
+                $tag_link = clean_url($arrs[link]);
+                $name = str_replace(' ', '&nbsp;', wp_specialchars( $arrs[name] ));
+                $countt = $arrs[count];
+                $hed =  $arrs[header];
+
+                if($i < 11){
+                    print "<li><a href=\"$tag_link\">$name</a></li>";
+                }
+        }
+}
+
+
+	function exclude_posts_for_main_query_f() {
+
+		global $exclude_posts_for_main_query;
+
+				if ( is_category() ) {
+					$args['category__in'] = get_query_var( 'cat' );
+				}
+
+				$args['posts_per_page'] 	 = 2;
+				$args['post__in']            = get_option( 'sticky_posts' );
+				$args['ignore_sticky_posts'] = 1;
+
+				ob_start();
+				$exclude_top_post = array();
+				$the_query        = new WP_Query( $args );
+				
+				if ( $the_query->have_posts() ) :
+					while ( $the_query->have_posts() ) : $the_query->the_post();
+						get_template_part( 'content', 'latest_post' );
+						$exclude_top_post[]             = get_the_ID();
+						$exclude_posts_for_main_query[] = get_the_ID();
+					endwhile; endif;
+				wp_reset_postdata();
+				$sticky_post_content = ob_get_clean();
+
+			return $exclude_posts_for_main_query;
 	}

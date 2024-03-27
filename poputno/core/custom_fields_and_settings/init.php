@@ -1,5 +1,6 @@
 <?php
-define('ACF_LITE', true);
+ define('ACF_LITE', true);
+//define('ACF_LITE', false);
 define("OPTIONS_ICON", 'dashicons-admin-settings');
 
 

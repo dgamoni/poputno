@@ -1,6 +1,19 @@
 <?php global $post; ?>
 <li class="new_post_item">
 	<div class="new_img_cont">
+
+		<div class="post-cat-poputno">
+			<?php 
+				echo poputno_category( get_the_ID() );
+				
+				// $cur_terms = get_the_terms( get_the_ID(), 'region' );
+				// foreach($cur_terms as $cur_term){
+				// 	echo '<a href="'. get_term_link( (int)$cur_term->term_id, $cur_term->taxonomy ) .'">'. $cur_term->name .'</a>,';
+				// }
+
+			?>
+		</div> 
+
 		<a href="<?php the_permalink(); ?>">
 			<img src="<?php echo get_img_post( get_the_ID(), 'ain-post' ); ?>"
 			     alt="<?php the_title(); ?>">
@@ -37,3 +50,4 @@
 	</div>
 	<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 </li>
+

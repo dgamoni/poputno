@@ -28,6 +28,8 @@ if (!is_paged()) {
     //Два верхним огромных поста
     top_two_big_posts_and_adv();
 
+    //var_dump($exclude_posts_for_main_query);
+
     //Это лучшее в категориях и на главной
     //featured_posts_home_page();
 
@@ -86,18 +88,26 @@ echo '</ul>';
 echo '</div>';
 
 if (count($all_post_ids) >= 2) {
-    $excluded_posts = array_slice($all_post_ids, -2, 2);
+    //$excluded_posts = array_slice($all_post_ids, -2, 2);
 }
+
+//var_dump( get_excluded_posts_fog_loops() );
+//var_dump( get_two_last_posts_id_for_exclude() );
+//var_dump( get_featured_posts_for_exclude() );
 
 ?>
 
 
-<?php //ajax_pagination($custom_query = false, $inner_class = '.ajax-content', $posts_per_page = 15, $ajax_action = 'ain_ajax_pagination', null, $excluded_posts); 
-ajax_pagination($custom_query = false, $inner_class = '.ajax-content', $posts_per_page = 15, $ajax_action = 'ain_ajax_pagination', null); ?>
+<?php 
+global $exclude_posts_for_main_query;
+//ajax_pagination($custom_query = false, $inner_class = '.ajax-content', $posts_per_page = 15, $ajax_action = 'ain_ajax_pagination', null, $excluded_posts); 
+ajax_pagination($custom_query = false, $inner_class = '.ajax-content', $posts_per_page = 15, $ajax_action = 'ain_ajax_pagination', null, $excluded_posts = $exclude_posts_for_main_query); ?>
 
     <div class="fresh_navigation">
         <?php
         global $wp_query;
+        
+
         $big = 999999999; // need an unlikely integer
         echo paginate_links(array(
             'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
@@ -106,6 +116,7 @@ ajax_pagination($custom_query = false, $inner_class = '.ajax-content', $posts_pe
             'total' => $wp_query->max_num_pages,
             'prev_text' => __('<'),
             'next_text' => __('>'),
+            
         ));
         ?>
     </div>

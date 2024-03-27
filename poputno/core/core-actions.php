@@ -317,4 +317,39 @@ function excluded_pre_get_posts($query)
     }
 }
 
-add_action('pre_get_posts', 'excluded_pre_get_posts');
+//add_action('pre_get_posts', 'excluded_pre_get_posts');
+
+
+
+function excluded_pre_get_posts_2($query)
+{
+    
+
+
+    if (is_home() && $query->is_main_query() && !is_paged()) {
+        $query->set('posts_per_page', 15);
+        $excluded = exclude_posts_for_main_query_f();
+        $query->set('post__not_in', $excluded);
+        $query->set('ignore_sticky_posts', 1);
+        
+
+    } elseif (is_home() && $query->is_main_query() && is_paged()) {
+        $query->set('posts_per_page', 15);
+        $excluded = exclude_posts_for_main_query_f();
+        $query->set('post__not_in', $excluded);
+        $query->set('ignore_sticky_posts', 1);
+
+    } elseif (is_category() && $query->is_main_query() && !is_paged()) {
+        $query->set('posts_per_page', 15);
+        $excluded = exclude_posts_for_main_query_f();
+        $query->set('post__not_in', $excluded);
+        $query->set('ignore_sticky_posts', 1);
+
+    } elseif (is_category() && $query->is_main_query() && is_paged()) {
+        $query->set('posts_per_page', 15);
+        $excluded = exclude_posts_for_main_query_f();
+        $query->set('post__not_in', $excluded);
+        $query->set('ignore_sticky_posts', 1);
+    } 
+}
+add_action('pre_get_posts', 'excluded_pre_get_posts_2');

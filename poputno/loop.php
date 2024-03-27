@@ -41,7 +41,7 @@ if (have_posts()):  while (have_posts()): the_post();
 endwhile;endif;
 
 if (is_category() && !is_paged()) {
-    $excluded_posts = array_slice($all_post_ids, -2, 2);
+    //$excluded_posts = array_slice($all_post_ids, -2, 2);
 }
 
 echo '</ul>';
@@ -49,7 +49,9 @@ echo '</div>';
 
 ?>
 <?php 
-ajax_pagination($custom_query = false, $inner_class = '.ajax-content', $posts_per_page = 16, $ajax_action = 'ain_ajax_pagination', null, $excluded_posts);
+global $exclude_posts_for_main_query;
+ajax_pagination($custom_query = false, $inner_class = '.ajax-content', $posts_per_page = 15, $ajax_action = 'ain_ajax_pagination', null, $excluded_posts = $exclude_posts_for_main_query);
+//ajax_pagination($custom_query = false, $inner_class = '.ajax-content', $posts_per_page = 16, $ajax_action = 'ain_ajax_pagination', null, $excluded_posts);
 //ajax_pagination($custom_query = false, $inner_class = '.ajax-content', $posts_per_page = 15, $ajax_action = 'ain_ajax_pagination', null);
  ?>
 
